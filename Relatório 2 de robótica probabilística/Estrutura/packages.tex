@@ -1,0 +1,71 @@
+% Pacotes fundamentais e configurações básicas
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{etoolbox}
+\usepackage{ragged2e}
+\usepackage{makecell}
+\usepackage{soul}
+\usepackage{verbatim}
+% Pacote fontspec para configuração da fonte Arial
+\usepackage{fontspec}
+\setmainfont{Arial}
+
+% Pacote para citações e referências bibliográficas
+\usepackage[alf,abnt-etal-text=it,abnt-emphasize=bf]{abntex2cite}
+
+% Pacotes adicionais para tabelas, algoritmos, figuras etc.
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage[portuguese,onelanguage,ruled,vlined]{algorithm2e}
+
+% Retira o número do capítulo da numeração da equação
+\counterwithout{equation}{chapter}
+
+%Formata os títulos dos capítulos
+\renewcommand*{\chapnumfont}{\normalfont\bfseries\sffamily}
+\renewcommand*{\chaptitlefont}{\normalfont\bfseries\sffamily}
+% \renewcommand*{\secnumfont}{\normalfont\bfseries\sffamily}
+% \renewcommand*{\sectitlefont}{\normalfont\bfseries\sffamily}
+% \renewcommand*{\subsecnumfont}{\normalfont\bfseries\sffamily}
+% \renewcommand*{\subsectitlefont}{\normalfont\bfseries\sffamily}
+\setsecheadstyle{\normalfont\bfseries\sffamily\upcase}
+\setsubsecheadstyle{\normalfont\bfseries\sffamily\upcase}
+\setsubsubsecheadstyle{\normalfont\bfseries\sffamily\upcase}
+\setlength{\afterchapskip}{0.5cm}
+\setlength{\aftersecskip}{0.5cm}
+
+% Inclua o pacote caption com as configurações adequadas
+\usepackage{caption}
+
+% Configuração do pacote caption para centralizar os títulos
+\captionsetup{justification=centering, singlelinecheck=false}
+
+\floatstyle{plaintop}
+\newfloat{mapa}{h!btp}{mapa}\floatname{mapa}{Mapa}
+\newcommand{\mapaautorefname}{Mapa}
+\newfloat{diagrama}{h!btp}{diagrama}\floatname{diagrama}{Diagrama}
+\newcommand{\diagramaautorefname}{Diagrama}
+\newfloat{fluxograma}{h!btp}{fluxograma}\floatname{fluxograma}{Fluxograma}
+\newcommand{\fluxogramaautorefname}{Fluxograma}
+\newfloat{figura}{h!btp}{figura}\floatname{figura}{Figura}
+\newcommand{\figuraautorefname}{Figura}
+\newfloat{quadro}{h!btp}{quadro}\floatname{quadro}{Quadro}
+\newcommand{\quadroautorefname}{Quadro}
+\newfloat{grafico}{h!btp}{grafico}\floatname{grafico}{Gráfico}
+\newcommand{\graficoautorefname}{Gráfico}
+\newfloat{tabela}{h!btp}{tabela}\floatname{tabela}{Tabela}
+\newcommand{\tabelaautorefname}{Tabela}
+
+\newenvironment{citacaodireta}{
+\vspace*{8mm} \setlength{\parindent}{0cm}
+\hfill \begin{minipage}{140mm}
+}{
+\vspace*{8mm} \end{minipage}
+}

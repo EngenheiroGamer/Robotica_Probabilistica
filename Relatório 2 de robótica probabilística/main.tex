@@ -1,0 +1,50 @@
+%******************************************************************************************
+% CEFET
+
+% Relatório do Trabalho 2 de Robótica Probabilística
+
+% DESENVOLVIDO POR Cleberson Lael, Diogo Ayres e Pedro Pedrosa
+% Autores: Cleberson Lael, Diogo Ayres e Pedro Pedrosa
+
+% ---- Pasta texto ----
+
+% O arquivo "dados.tex" é o editável com as informações que vão para a capa, folha de rosto, declaração e identificação da empresa.
+
+% O arquivo "referencias.bib" é o editável que armazena as informações sobre as referências utilizadas no texto.
+
+% O arquivo "texto.tex" é o editável onde você escreve seu texto do relatório.
+%******************************************************************************************
+
+\documentclass[
+    12pt,
+    openright,
+    oneside,
+    a4paper,
+    chapter=TITLE,
+    sumario=tradicional,
+    english,
+    brazil
+]{abntex2}
+
+\input{Estrutura/Modelo}
+
+\begin{document}
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing
+\pagenumbering{gobble}
+
+\capa
+
+\folhaderosto
+
+\declaracao
+
+\empresa
+
+\sumario
+
+\input{Texto/texto}
+
+\cleardoublepage
+
+\end{document}
