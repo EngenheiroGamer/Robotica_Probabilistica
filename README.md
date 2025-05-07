@@ -1,4 +1,4 @@
-# ros_gz_project_template
+# Robot Project for Robotics Course [CEFET-RJ]
 A Robot project integrating ROS 2 and Gazebo (Fortress) simulator.
 
 ## Included packages
