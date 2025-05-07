@@ -27,7 +27,7 @@ A Robot project integrating ROS 2 and Gazebo (Fortress) simulator.<br />
     $ bash InitProject.sh<br />
 <br />
 3. Execute the project<br />
-    $ ros2 launch ros_gz_bringup robot.sdf<br />
+    $ ros2 launch ros_gz_bringup robot.launch.py<br />
 <br />
 4. Move the robot<br />
     In another terminal open the ROS2 teleop_twist_keyboard<br />
