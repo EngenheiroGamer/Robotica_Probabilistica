@@ -14,22 +14,16 @@ A Robot project integrating ROS 2 and Gazebo (Fortress) simulator.<br />
 <br />
 ## Install Requirements<br />
 <br /><br />
-1. Download Project by Git Clone or using the Yaml<br />
+1. Download Project by Git Clone<br />
     $ git clone https://github.com/EngenheiroGamer/Robotica_Probabilistica.git<br />
-    or<br />
-    go to the folder you want to download the project (recomended ~/project_ws)<br />
-    if not created yet:<br />
-        $ mkdir ~/project_ws<br />
-        $ cd ~/project_ws<br />
-    $ wget https://raw.githubusercontent.com/EngenheiroGamer/Robotica_Probabilistica/main/workspace.yaml<br />
-    $ vcs import < workspace.yaml<br />
 <br />
 ## Install necessary tools and ROS2 Humble (If not installed yet)<br />
 <br />
-    $ bash /path/to/downloaded/project/ROS2_GZ_Install.sh <br />
+    $ cd /path/to/downloaded/project/Robotica_Probabilistica<br />
+    $ bash ROS2_GZ_Install.sh <br />
 <br />
 2. Build the project<br />
-    $ cd ~/project_ws<br />
+    $ cd /path/to/downloaded/project/Robotica_Probabilistica<br />
     $ bash InitProject.sh<br />
 <br />
 3. Execute the project<br />
