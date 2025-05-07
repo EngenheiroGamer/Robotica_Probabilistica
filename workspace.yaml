@@ -3,4 +3,4 @@ repositories:
   ros_gz_project_template:
     type: git
     url: https://github.com/EngenheiroGamer/Robotica_Probabilistica.git
-    version: fortress
+    version: main
