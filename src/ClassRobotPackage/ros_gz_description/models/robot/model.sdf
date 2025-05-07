@@ -57,7 +57,7 @@
         <visual name='visual_left_wheel'>
           <geometry>
             <sphere>
-              <radius>0.3</radius>
+              <radius>0.25</radius>
             </sphere>
           </geometry>
           <material>
@@ -69,7 +69,7 @@
         <collision name='collision_left_wheel'>
           <geometry>
             <sphere>
-              <radius>0.3</radius>
+              <radius>0.25</radius>
             </sphere>
           </geometry>
         </collision>
@@ -91,7 +91,7 @@
         <visual name='visual_right_wheel'>
           <geometry>
             <sphere>
-              <radius>0.3</radius>
+              <radius>0.25</radius>
             </sphere>
           </geometry>
           <material>
@@ -103,7 +103,7 @@
         <collision name='collision_right_wheel'>
           <geometry>
             <sphere>
-              <radius>0.3</radius>
+              <radius>0.25</radius>
             </sphere>
           </geometry>
         </collision>
@@ -125,7 +125,7 @@
         <visual name='visual_caster'>
           <geometry>
             <sphere>
-              <radius>0.2</radius>
+              <radius>0.25</radius>
             </sphere>
           </geometry>
           <material>
@@ -137,7 +137,7 @@
         <collision name='collision_caster'>
           <geometry>
             <sphere>
-              <radius>0.2</radius>
+              <radius>0.25</radius>
             </sphere>
           </geometry>
         </collision>
