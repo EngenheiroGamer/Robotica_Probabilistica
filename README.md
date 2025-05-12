@@ -22,9 +22,10 @@ A Robot project integrating ROS 2 and Gazebo (Fortress) simulator.<br />
     $ cd /path/to/downloaded/project/Robotica_Probabilistica<br />
     $ bash ROS2_GZ_Install.sh <br />
 <br />
-2. Build the project<br />
+2. Build the project and source<br />
     $ cd /path/to/downloaded/project/Robotica_Probabilistica<br />
     $ bash InitProject.sh<br />
+    $ source install/setup.sh<br /> 
 <br />
 3. Execute the project<br />
     $ ros2 launch ros_gz_bringup robot.launch.py<br />
