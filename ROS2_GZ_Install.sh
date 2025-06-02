@@ -14,6 +14,7 @@ if [ ${Ubuntu_Release} == "22.04" ]; then
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
     sudo apt update
     sudo apt upgrade -y
+    sudo pip3 install transforms3d
     sudo apt install ros-humble-desktop-full -y
     sudo apt install ros-dev-tools -y
     echo -e "export IGN_VERSION=fortress\nsource /opt/ros/humble/setup.bash" >> /home/${USER}/.bashrc

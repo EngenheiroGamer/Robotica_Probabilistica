@@ -56,7 +56,7 @@
           <geometry>
             <plane>
               <normal>0 0 1</normal>
-              <size>20 20</size>
+              <size>100 100</size>
             </plane>
           </geometry>
         </collision>
@@ -64,12 +64,12 @@
           <geometry>
             <plane>
               <normal>0 0 1</normal>
-              <size>20 20</size>
+              <size>100 100</size>
             </plane>
           </geometry>
           <material>
             <ambient>0.8 0.8 0.8 1</ambient>
-            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <diffuse>0.8 0.8 0.8 0.1</diffuse>
             <specular>0.8 0.8 0.8 1</specular>
           </material>
         </visual>
@@ -78,13 +78,13 @@
 
     <model name='wall'>
         <static>true</static>
-        <pose>10 0 0 0 0 0</pose><!--pose relative to the world-->
+        <pose>0 10 -1.1 0 0 0</pose><!--pose relative to the world-->
         <link name='box'>
             <pose/>
             <visual name='visual'>
                 <geometry>
                     <box>
-                        <size>0.5 10.0 2.0</size>
+                        <size>0.5 20.5 2.0</size>
                     </box>
                 </geometry>
                 <!--let's add color to our link-->
@@ -97,7 +97,7 @@
             <collision name='collision'>
                 <geometry>
                     <box>
-                        <size>0.5 10.0 2.0</size>
+                        <size>0.5 20.5 2.0</size>
                     </box>
                 </geometry>
             </collision>
@@ -118,13 +118,13 @@
 
     <model name='wall2'>
         <static>true</static>
-        <pose>-10 0 0 0 0 0</pose><!--pose relative to the world-->
+        <pose>20 10 -1.1 0 0 0</pose><!--pose relative to the world-->
         <link name='box'>
             <pose/>
             <visual name='visual'>
                 <geometry>
                     <box>
-                        <size>0.5 10.0 2.0</size>
+                        <size>0.5 20.5 2.0</size>
                     </box>
                 </geometry>
                 <!--let's add color to our link-->
@@ -137,7 +137,7 @@
             <collision name='collision'>
                 <geometry>
                     <box>
-                        <size>0.5 10.0 2.0</size>
+                        <size>0.5 20.5 2.0</size>
                     </box>
                 </geometry>
             </collision>
@@ -158,13 +158,13 @@
 
     <model name='wall3'>
         <static>true</static>
-        <pose> 0 10 0 0 0 0</pose><!--pose relative to the world-->
+        <pose> 10 20 -1.1 0 0 0</pose><!--pose relative to the world-->
         <link name='box'>
             <pose/>
             <visual name='visual'>
                 <geometry>
                     <box>
-                        <size>10.0 0.5 2.0</size>
+                        <size>20.5 0.5 2.0</size>
                     </box>
                 </geometry>
                 <!--let's add color to our link-->
@@ -177,7 +177,7 @@
             <collision name='collision'>
                 <geometry>
                     <box>
-                        <size>10.0 0.5 2.0</size>
+                        <size>20.5 0.5 2.0</size>
                     </box>
                 </geometry>
             </collision>
@@ -198,13 +198,13 @@
 
     <model name='wall4'>
         <static>true</static>
-        <pose> 0 -10 0 0 0 0</pose><!--pose relative to the world-->
+        <pose> 10 0 -1.1 0 0 0</pose><!--pose relative to the world-->
         <link name='box'>
             <pose/>
             <visual name='visual'>
                 <geometry>
                     <box>
-                        <size>10.0 0.5 2.0</size>
+                        <size>20.5 0.5 2.0</size>
                     </box>
                 </geometry>
                 <!--let's add color to our link-->
@@ -217,7 +217,7 @@
             <collision name='collision'>
                 <geometry>
                     <box>
-                        <size>10.0 0.5 2.0</size>
+                        <size>20.5 0.5 2.0</size>
                     </box>
                 </geometry>
             </collision>
@@ -235,6 +235,288 @@
             <enabled>true</enabled>
         </plugin>
     </model>
+
+    <model name='wall5'>
+        <static>true</static>
+        <pose> 10 5 -1.1 0 0 0</pose><!--pose relative to the world-->
+        <link name='box'>
+            <pose/>
+            <visual name='visual'>
+                <geometry>
+                    <box>
+                        <size>20.5 0.5 2.0</size>
+                    </box>
+                </geometry>
+                <!--let's add color to our link-->
+                <material>
+                    <ambient>0.0 0.0 1.0 1</ambient>
+                    <diffuse>0.0 0.0 1.0 1</diffuse>
+                    <specular>0.0 0.0 1.0 1</specular>
+                </material>
+            </visual>
+            <collision name='collision'>
+                <geometry>
+                    <box>
+                        <size>20.5 0.5 2.0</size>
+                    </box>
+                </geometry>
+            </collision>
+            <sensor name='sensor_contact' type='contact'>
+                <contact>
+                    <collision>collision</collision>
+                </contact>
+            </sensor>
+        </link>
+        <plugin filename="libignition-gazebo-touchplugin-system.so"
+                name="ignition::gazebo::systems::TouchPlugin">
+            <target>robot</target>
+            <namespace>wall4</namespace>
+            <time>0.001</time>
+            <enabled>true</enabled>
+        </plugin>
+    </model>
+
+    <model name='wall6'>
+        <static>true</static>
+        <pose> 10 10 -1.1 0 0 0</pose><!--pose relative to the world-->
+        <link name='box'>
+            <pose/>
+            <visual name='visual'>
+                <geometry>
+                    <box>
+                        <size>20.5 0.5 2.0</size>
+                    </box>
+                </geometry>
+                <!--let's add color to our link-->
+                <material>
+                    <ambient>0.0 0.0 1.0 1</ambient>
+                    <diffuse>0.0 0.0 1.0 1</diffuse>
+                    <specular>0.0 0.0 1.0 1</specular>
+                </material>
+            </visual>
+            <collision name='collision'>
+                <geometry>
+                    <box>
+                        <size>20.5 0.5 2.0</size>
+                    </box>
+                </geometry>
+            </collision>
+            <sensor name='sensor_contact' type='contact'>
+                <contact>
+                    <collision>collision</collision>
+                </contact>
+            </sensor>
+        </link>
+        <plugin filename="libignition-gazebo-touchplugin-system.so"
+                name="ignition::gazebo::systems::TouchPlugin">
+            <target>robot</target>
+            <namespace>wall4</namespace>
+            <time>0.001</time>
+            <enabled>true</enabled>
+        </plugin>
+    </model>
+
+    <model name='wall7'>
+        <static>true</static>
+        <pose> 10 15 -1.1 0 0 0</pose><!--pose relative to the world-->
+        <link name='box'>
+            <pose/>
+            <visual name='visual'>
+                <geometry>
+                    <box>
+                        <size>20.5 0.5 2.0</size>
+                    </box>
+                </geometry>
+                <!--let's add color to our link-->
+                <material>
+                    <ambient>0.0 0.0 1.0 1</ambient>
+                    <diffuse>0.0 0.0 1.0 1</diffuse>
+                    <specular>0.0 0.0 1.0 1</specular>
+                </material>
+            </visual>
+            <collision name='collision'>
+                <geometry>
+                    <box>
+                        <size>20.5 0.5 2.0</size>
+                    </box>
+                </geometry>
+            </collision>
+            <sensor name='sensor_contact' type='contact'>
+                <contact>
+                    <collision>collision</collision>
+                </contact>
+            </sensor>
+        </link>
+        <plugin filename="libignition-gazebo-touchplugin-system.so"
+                name="ignition::gazebo::systems::TouchPlugin">
+            <target>robot</target>
+            <namespace>wall4</namespace>
+            <time>0.001</time>
+            <enabled>true</enabled>
+        </plugin>
+    </model>
+
+    <model name='wall8'>
+        <static>true</static>
+        <pose>15 10 -1.1 0 0 0</pose><!--pose relative to the world-->
+        <link name='box'>
+            <pose/>
+            <visual name='visual'>
+                <geometry>
+                    <box>
+                        <size>0.5 20.5 2.0</size>
+                    </box>
+                </geometry>
+                <!--let's add color to our link-->
+                <material>
+                    <ambient>0.0 0.0 1.0 1</ambient>
+                    <diffuse>0.0 0.0 1.0 1</diffuse>
+                    <specular>0.0 0.0 1.0 1</specular>
+                </material>
+            </visual>
+            <collision name='collision'>
+                <geometry>
+                    <box>
+                        <size>0.5 20.5 2.0</size>
+                    </box>
+                </geometry>
+            </collision>
+            <sensor name='sensor_contact' type='contact'>
+                <contact>
+                    <collision>collision</collision>
+                </contact>
+            </sensor>
+        </link>
+        <plugin filename="libignition-gazebo-touchplugin-system.so"
+                name="ignition::gazebo::systems::TouchPlugin">
+            <target>robot</target>
+            <namespace>wall2</namespace>
+            <time>0.001</time>
+            <enabled>true</enabled>
+        </plugin>
+    </model>
+
+    <model name='wall9'>
+        <static>true</static>
+        <pose>15 10 -1.1 0 0 0</pose><!--pose relative to the world-->
+        <link name='box'>
+            <pose/>
+            <visual name='visual'>
+                <geometry>
+                    <box>
+                        <size>0.5 20.5 2.0</size>
+                    </box>
+                </geometry>
+                <!--let's add color to our link-->
+                <material>
+                    <ambient>0.0 0.0 1.0 1</ambient>
+                    <diffuse>0.0 0.0 1.0 1</diffuse>
+                    <specular>0.0 0.0 1.0 1</specular>
+                </material>
+            </visual>
+            <collision name='collision'>
+                <geometry>
+                    <box>
+                        <size>0.5 20.5 2.0</size>
+                    </box>
+                </geometry>
+            </collision>
+            <sensor name='sensor_contact' type='contact'>
+                <contact>
+                    <collision>collision</collision>
+                </contact>
+            </sensor>
+        </link>
+        <plugin filename="libignition-gazebo-touchplugin-system.so"
+                name="ignition::gazebo::systems::TouchPlugin">
+            <target>robot</target>
+            <namespace>wall2</namespace>
+            <time>0.001</time>
+            <enabled>true</enabled>
+        </plugin>
+    </model>
+
+    <model name='wall10'>
+        <static>true</static>
+        <pose>10 10 -1.1 0 0 0</pose><!--pose relative to the world-->
+        <link name='box'>
+            <pose/>
+            <visual name='visual'>
+                <geometry>
+                    <box>
+                        <size>0.5 20.5 2.0</size>
+                    </box>
+                </geometry>
+                <!--let's add color to our link-->
+                <material>
+                    <ambient>0.0 0.0 1.0 1</ambient>
+                    <diffuse>0.0 0.0 1.0 1</diffuse>
+                    <specular>0.0 0.0 1.0 1</specular>
+                </material>
+            </visual>
+            <collision name='collision'>
+                <geometry>
+                    <box>
+                        <size>0.5 20.5 2.0</size>
+                    </box>
+                </geometry>
+            </collision>
+            <sensor name='sensor_contact' type='contact'>
+                <contact>
+                    <collision>collision</collision>
+                </contact>
+            </sensor>
+        </link>
+        <plugin filename="libignition-gazebo-touchplugin-system.so"
+                name="ignition::gazebo::systems::TouchPlugin">
+            <target>robot</target>
+            <namespace>wall2</namespace>
+            <time>0.001</time>
+            <enabled>true</enabled>
+        </plugin>
+    </model>
+
+    <model name='wall11'>
+        <static>true</static>
+        <pose>5 10 -1.1 0 0 0</pose><!--pose relative to the world-->
+        <link name='box'>
+            <pose/>
+            <visual name='visual'>
+                <geometry>
+                    <box>
+                        <size>0.5 20.5 2.0</size>
+                    </box>
+                </geometry>
+                <!--let's add color to our link-->
+                <material>
+                    <ambient>0.0 0.0 1.0 1</ambient>
+                    <diffuse>0.0 0.0 1.0 1</diffuse>
+                    <specular>0.0 0.0 1.0 1</specular>
+                </material>
+            </visual>
+            <collision name='collision'>
+                <geometry>
+                    <box>
+                        <size>0.5 20.5 2.0</size>
+                    </box>
+                </geometry>
+            </collision>
+            <sensor name='sensor_contact' type='contact'>
+                <contact>
+                    <collision>collision</collision>
+                </contact>
+            </sensor>
+        </link>
+        <plugin filename="libignition-gazebo-touchplugin-system.so"
+                name="ignition::gazebo::systems::TouchPlugin">
+            <target>robot</target>
+            <namespace>wall2</namespace>
+            <time>0.001</time>
+            <enabled>true</enabled>
+        </plugin>
+    </model>
+
+
 
     <model name="robot">
       <self_collide>true</self_collide>
