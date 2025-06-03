@@ -1,8 +1,6 @@
 import numpy as np
 import math
 
-goal = [20, 20]
-
 def algorithm(current_position, goal, lidar_data, angle_min, angle_increment, current_orientation):
 
     # Parâmetros de modelagem

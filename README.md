@@ -35,4 +35,8 @@ A Robot project integrating ROS 2 and Gazebo (Fortress) simulator.<br />
     $ ros2 run teleop_twist_keyboard teleop_twist_keyboard<br />
     use the keys showed on the menu to move the robot<br />
 <br />
-5. Check on the RViz the sensors. You can also add the camera image by selecting by topics and Image option. <br />
+5. Use the A* Algorithm:<br />
+$ cd /path/to/downloaded/project/Robotica_Probabilistica<br />
+$ python3 TrabalhoFinal_RoboticaProbabilistica.py<br />
+<br />
+The grid created is displayed underground, without affecting the moviment of the car, and the goal is to move the car from one side to the other through the grid, using the sortest possible path, without touching the wall. At the end, the openCV image opens, showing the box identified by the green line around it.<br />
