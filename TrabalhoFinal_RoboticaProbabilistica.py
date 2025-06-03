@@ -148,32 +148,6 @@ class ImageProcessing(Node):
         cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
         OpenCV_Bridge.main(cv_image)
 
-    # def image_callback(self, msg):
-    #     cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
-    #     gray = cv.cvtColor(cv_image, cv.COLOR_BGR2GRAY)
-    #     blurred = cv.GaussianBlur(gray, (5, 5), 0)
-    #     edged = cv.Canny(blurred, 50, 150)
-
-    #     contours, _ = cv.findContours(edged, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
-    #     square_detected = False
-
-    #     for cnt in contours:
-    #         approx = cv.approxPolyDP(cnt, 0.04 * cv.arcLength(cnt, True), True)
-
-    #         if len(approx) == 4 and cv.isContourConvex(approx):
-    #             area = cv.contourArea(approx)
-    #             if area > 1000:  # Ajuste este valor conforme a escala da câmera
-    #                 square_detected = True
-    #                 cv.drawContours(cv_image, [approx], -1, (0, 255, 0), 3)
-
-    #     if square_detected:
-    #         self.get_logger().info("Quadrado detectado na imagem!")
-    #     else:
-    #         self.get_logger().info("Nenhum quadrado detectado.")
-
-    #     cv.imshow("Detecção de Quadrado", cv_image)
-    #     cv.waitKey(1)
-
     def odom_callback(self, msg):
         position = msg.pose.pose.position
         orientation_q = msg.pose.pose.orientation
@@ -227,6 +201,8 @@ class ImageProcessing(Node):
             if self.goal_index >= len(self.goals):
                 self.get_logger().info("Todos os objetivos completados.")
                 self.stop_robot()
+                WINDOW_NAME = "Detecção de Quadrado"
+                cv.namedWindow(WINDOW_NAME, cv.WINDOW_NORMAL)
                 self.camera_subscription = self.create_subscription(Image, '/camera', self.image_callback, 10)
                 return
             #else:

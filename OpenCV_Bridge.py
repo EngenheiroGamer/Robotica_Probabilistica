@@ -1,35 +1,31 @@
 import numpy as np
 import cv2 as cv
 
+def main(cv_image):
 
-""" def main(cv_image):
-    # Verifica se a imagem foi recebida corretamente
     if cv_image is None:
         print("Erro: Imagem não recebida corretamente")
         return
 
-    # Matriz para engrossamento das bordas
-    k = np.ones((3, 3), np.uint8)
+    gray = cv.cvtColor(cv_image, cv.COLOR_BGR2GRAY)
+    edged = cv.Canny(gray, 100, 300)
 
-    # Transformação para escala de cinza
-    escala_cinza = cv.cvtColor(cv_image, cv.COLOR_BGR2GRAY)
+    contours, _ = cv.findContours(edged, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
+    square_detected = False
 
-    # Transformação para bordas
-    bordas = cv.Canny(escala_cinza, 100, 300)
-    bordas_blk = 255 - bordas
-    # Bordas engrossadas
-    bordas_en = cv.dilate(bordas, k, iterations=0)
+    for cnt in contours:
+        approx = cv.approxPolyDP(cnt, 0.04 * cv.arcLength(cnt, True), True)
 
-    # Transforma a imagem de bordas com 1 canal em uma imagem em 3 canais
-    bordas_colorido = cv.cvtColor(bordas_en, cv.COLOR_GRAY2BGR)
+        if len(approx) == 4 and cv.isContourConvex(approx):
+            area = cv.contourArea(approx)
+            if area > 1000:  # Ajuste este valor conforme a escala da câmera
+                square_detected = True
+                cv.drawContours(cv_image, [approx], -1, (0, 255, 0), 3)
 
-    # Superposição das imagens
-    superposicao = cv.addWeighted(cv_image, 0.9, bordas_colorido, 0.6, 0)
+    if square_detected:
+        print("Quadrado detectado na imagem!")
+    else:
+        print("Nenhum quadrado detectado.")
 
-    # Exibe o vídeo das bordas
-    cv.imshow('Video Bordas', bordas_blk)
-
-    # Exibe o vídeo da soma do normal com os contornos
-    cv.imshow('Video Normal + Bordas', superposicao)
-
-    cv.waitKey(1) """
+    cv.imshow("Detecção de Quadrado", cv_image)
+    cv.waitKey(1)
