@@ -2,7 +2,7 @@ import numpy as np
 import cv2 as cv
 
 
-def main(cv_image):
+""" def main(cv_image):
     # Verifica se a imagem foi recebida corretamente
     if cv_image is None:
         print("Erro: Imagem não recebida corretamente")
@@ -32,4 +32,4 @@ def main(cv_image):
     # Exibe o vídeo da soma do normal com os contornos
     cv.imshow('Video Normal + Bordas', superposicao)
 
-    cv.waitKey(1)
+    cv.waitKey(1) """

@@ -11,6 +11,7 @@ import transforms3d
 import numpy as np
 import math
 from importlib import import_module
+from A_star import main as astar_main
 
 
 """ # Importação dinâmica dos módulos auxiliares
@@ -132,7 +133,8 @@ class ImageProcessing(Node):
         self.current_orientation = None
 
         # Lista de objetivos: adicione quantos quiser
-        self.goals = [[5, 5], [10, 5], [10, 10]]  # Exemplo
+        #self.goals = [[2.5, 2.5], [7.5, 2.5], [7.5, 7.5], [7.5, 12.5], [7.5, 17.5], [2.5, 17.5]]  # Exemplo
+        self.goals = astar_main()  # Agora usa o resultado do A*
         self.goal_index = 0
         self.goal_tolerance = 0.3  # Distância para considerar o goal alcançado
 
@@ -145,6 +147,32 @@ class ImageProcessing(Node):
     def image_callback(self, msg):
         cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
         OpenCV_Bridge.main(cv_image)
+
+    # def image_callback(self, msg):
+    #     cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
+    #     gray = cv.cvtColor(cv_image, cv.COLOR_BGR2GRAY)
+    #     blurred = cv.GaussianBlur(gray, (5, 5), 0)
+    #     edged = cv.Canny(blurred, 50, 150)
+
+    #     contours, _ = cv.findContours(edged, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
+    #     square_detected = False
+
+    #     for cnt in contours:
+    #         approx = cv.approxPolyDP(cnt, 0.04 * cv.arcLength(cnt, True), True)
+
+    #         if len(approx) == 4 and cv.isContourConvex(approx):
+    #             area = cv.contourArea(approx)
+    #             if area > 1000:  # Ajuste este valor conforme a escala da câmera
+    #                 square_detected = True
+    #                 cv.drawContours(cv_image, [approx], -1, (0, 255, 0), 3)
+
+    #     if square_detected:
+    #         self.get_logger().info("Quadrado detectado na imagem!")
+    #     else:
+    #         self.get_logger().info("Nenhum quadrado detectado.")
+
+    #     cv.imshow("Detecção de Quadrado", cv_image)
+    #     cv.waitKey(1)
 
     def odom_callback(self, msg):
         position = msg.pose.pose.position
@@ -174,6 +202,9 @@ class ImageProcessing(Node):
         return roll, pitch, yaw
     
     def lidar_callback(self, msg):
+
+        #self.camera_subscription = self.create_subscription(Image, '/camera', self.image_callback, 10)
+
         if self.current_position is None or self.current_orientation is None:
             self.get_logger().info("erro")
             return
@@ -196,9 +227,10 @@ class ImageProcessing(Node):
             if self.goal_index >= len(self.goals):
                 self.get_logger().info("Todos os objetivos completados.")
                 self.stop_robot()
+                self.camera_subscription = self.create_subscription(Image, '/camera', self.image_callback, 10)
                 return
-            else:
-                goal = self.goals[self.goal_index]  # Atualiza o próximo goal
+            #else:
+            #    goal = self.goals[self.goal_index]  # Atualiza o próximo goal
         
          # Atualiza o goal para o próximo
         goal = self.goals[self.goal_index]
@@ -230,10 +262,17 @@ class ImageProcessing(Node):
 
         self.position_publisher.publish(cmd_vel)
 
-        def stop_robot(self):
-            stop_msg = Twist()
-            self.position_publisher.publish(stop_msg)
-            self.get_logger().info("Robô parado.")
+        # def stop_robot(self):
+        #     stop_msg = Twist()
+        #     self.position_publisher.publish(stop_msg)
+        #     self.get_logger().info("Robô parado.")
+            
+    def stop_robot(self):
+        stop_msg = Twist()
+        stop_msg.linear.x = 0.0
+        stop_msg.angular.z = 0.0
+        self.position_publisher.publish(stop_msg)
+        self.get_logger().info("Robô parado.")
 
 #        if (forces[0] == 0 and forces[1] == 0):
 #            self.camera_subscription = self.create_subscription(Image, '/camera', self.image_callback, 10)
